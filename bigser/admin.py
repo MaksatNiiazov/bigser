@@ -53,6 +53,7 @@ class SocialLinksInline(TabularInline):
 @admin.register(Bigser)
 class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
     fieldsets = [
+        ('Logo', {'fields': ['logo', 'only_logo', 'logo_black', 'logo_white'], 'classes': ['collapse']}),
         ('Меню', {'fields': ['menu_item_main', 'menu_item_about', 'menu_item_products_top', 'menu_item_products_new',
                              'menu_item_partners', 'menu_item_reviews', 'menu_item_contacts'], 'classes': ['collapse']}),
         ('Главный контент', {'fields': ['main_video', 'main_image'], 'classes': ['collapse']}),
