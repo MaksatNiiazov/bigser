@@ -6,12 +6,21 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Bigser(models.Model):
+    logo = models.FileField(blank=True, null=True, verbose_name=_('Логотип'))
+    only_logo = models.FileField(default=False, null=True, verbose_name=_('Логотип только'))
+    logo_black = models.FileField(default=False, null=True, verbose_name=_('Логотип черный'))
+    logo_white = models.FileField(default=False, null=True, verbose_name=_('Логотип белый'))
+
     # menu
     menu_item_main = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('меню Главное'))
     menu_item_about = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('меню О нас'))
-    menu_item_products = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('меню Продукты'))
+    menu_item_products_top = models.CharField(max_length=100, blank=True, null=True,
+                                              verbose_name=_('меню Продукты бестселлеры'))
+    menu_item_products_new = models.CharField(max_length=100, blank=True, null=True,
+                                              verbose_name=_('меню Продукты новинки'))
     menu_item_partners = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('меню Партнеры'))
     menu_item_reviews = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('меню Отзывы'))
+    menu_item_contacts = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('меню Контакты'))
 
     # content
 
@@ -28,8 +37,13 @@ class Bigser(models.Model):
 
     # products
 
-    products_title = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('продукты Заголовок'))
-    products_text = models.TextField(blank=True, null=True, verbose_name=_('продукты Текст'))
+    products_title_top = models.CharField(max_length=100, blank=True, null=True,
+                                          verbose_name=_('продукты Заголовок бестселлеры'))
+    products_text_top = models.TextField(blank=True, null=True, verbose_name=_('продукты Текст бестселлеры'))
+
+    products_title_new = models.CharField(max_length=100, blank=True, null=True,
+                                          verbose_name=_('продукты Заголовок новинки'))
+    products_text_new = models.TextField(blank=True, null=True, verbose_name=_('продукты Текст новинки'))
 
     # partners
 
@@ -91,6 +105,16 @@ class Gallery(models.Model):
         verbose_name_plural = _('изображения галереи')
 
 
+class Partners(models.Model):
+    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('Партнер'), related_name='partners')
+    logo = models.FileField(blank=True, null=True, verbose_name=_('Партнер Логотип'))
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Партнер Название'))
+
+    class Meta:
+        verbose_name = _('партнер')
+        verbose_name_plural = _('партнеры')
+
+
 class Review(models.Model):
     page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('отзыв Страница'), related_name='review')
     image = models.FileField(blank=True, null=True, verbose_name=_('отзыв Изображение'))
@@ -101,7 +125,9 @@ class Review(models.Model):
 
 
 class Phones(models.Model):
-    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('телефон Страница'))
+    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, related_name='phones',
+                             verbose_name=_('телефон Страница'))
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
     phone = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Телефон'))
 
     class Meta:
@@ -110,7 +136,8 @@ class Phones(models.Model):
 
 
 class Emails(models.Model):
-    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('email Страница'))
+    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, related_name='emails', verbose_name=_('email Страница'))
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
     email = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Email'))
 
     class Meta:
@@ -119,7 +146,9 @@ class Emails(models.Model):
 
 
 class Address(models.Model):
-    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('адрес Страница'))
+    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, related_name='address_set',
+                             verbose_name=_('адрес Страница'))
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
     address = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Адрес'))
 
     class Meta:
@@ -127,8 +156,15 @@ class Address(models.Model):
         verbose_name_plural = _('адреса')
 
 
+class InstagramLinks(models.Model):
+    main = models.BooleanField(default=False, verbose_name=_('Главная'))
+    link = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Ссылка'))
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
+
+
 class SocialLinks(models.Model):
     page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('социальная Страница'))
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
     icon = models.FileField(blank=True, null=True, verbose_name=_('Иконка'))
     link = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Ссылка'))
 

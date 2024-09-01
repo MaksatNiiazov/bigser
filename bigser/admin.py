@@ -5,7 +5,7 @@ from unfold.admin import ModelAdmin, TabularInline
 from modeltranslation.admin import TabbedTranslationAdmin
 from unfold.contrib.forms.widgets import WysiwygWidget
 
-from .models import Bigser, Gallery, Review, Product, Phones, Emails, Address, SocialLinks, Request
+from .models import Bigser, Gallery, Review, Product, Phones, Emails, Address, SocialLinks, Request, InstagramLinks
 
 
 class PreviewImageMixin:
@@ -53,8 +53,8 @@ class SocialLinksInline(TabularInline):
 @admin.register(Bigser)
 class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
     fieldsets = [
-        ('Меню', {'fields': ['menu_item_main', 'menu_item_about', 'menu_item_products', 'menu_item_partners',
-                             'menu_item_reviews'], 'classes': ['collapse']}),
+        ('Меню', {'fields': ['menu_item_main', 'menu_item_about', 'menu_item_products_top', 'menu_item_products_new',
+                             'menu_item_partners', 'menu_item_reviews'], 'classes': ['collapse']}),
         ('Главный контент', {'fields': ['main_video', 'main_image'], 'classes': ['collapse']}),
         ('О нас',
          {'fields': ['about_title', 'about_text', 'our_mission_title', 'our_mission_text'], 'classes': ['collapse']}),
@@ -82,4 +82,9 @@ class ProductAdmin(ModelAdmin, TabbedTranslationAdmin, PreviewImageMixin):
 
 @admin.register(Request)
 class RequestAdmin(ModelAdmin):
+    pass
+
+
+@admin.register(InstagramLinks)
+class InstagramLinksAdmin(admin.ModelAdmin):
     pass
