@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Bigser(models.Model):
     logo = models.FileField(blank=True, null=True, verbose_name=_('Логотип'))
-    only_logo = models.FileField(default=False, null=True, verbose_name=_('Логотип только'))
+    only_logo = models.FileField(blank=True, null=True, verbose_name=_('Логотип только'))
     logo_black = models.FileField(default=False, null=True, verbose_name=_('Логотип черный'))
     logo_white = models.FileField(default=False, null=True, verbose_name=_('Логотип белый'))
 
