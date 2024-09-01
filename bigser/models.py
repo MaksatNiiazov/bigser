@@ -88,6 +88,8 @@ class Product(models.Model):
     image = models.FileField(blank=True, null=True, verbose_name=_('продукт Изображение'))
     title = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('продукт Заголовок'))
     description = models.TextField(blank=True, null=True, verbose_name=_('продукт Описание'))
+    new = models.BooleanField(default=False)
+    top = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _('продукт')
