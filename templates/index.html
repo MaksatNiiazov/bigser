@@ -143,7 +143,7 @@
         <div class="container">
             <h1 class="heading">{{ bigser.products_title_top }}</h1>
             <h3 class="sub-heading">
-                {{ bigser.products_text_top }}
+                {{ bigser.products_text_top|safe }}
             </h3>
 
             <div class="slider mt-5">
@@ -157,7 +157,7 @@
                                          alt=""/>
                                 </div>
                                 <h5>{{ top_product.title }}</h5>
-                                <p>{{ top_product.description }}</p>
+                                <p>{{ top_product.description|safe }}</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -182,9 +182,9 @@
     </div>
     <div id="novinky">
         <div class="container">
-            <h1 class="heading">{{ products_title_new }}</h1>
+            <h1 class="heading">{{ bigser.products_title_new }}</h1>
             <h3 class="sub-heading">
-                {{ products_text_new }}
+                {{ bigser.products_text_new|safe }}
             </h3>
 
             <div class="slider mt-5">
@@ -198,7 +198,7 @@
                                     <img src="{% if new_product.image %}{{ new_product.image.url }}{% endif %}" alt=""/>
                                 </div>
                                 <h5>{{ new_product.title }}</h5>
-                                <p>{{ new_product.text }}</p>
+                                <p>{{ new_product.text|safe }}</p>
                             </div>
 
                         {% endfor %}
