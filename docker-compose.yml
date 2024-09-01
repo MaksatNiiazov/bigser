@@ -11,3 +11,11 @@ services:
     ports:
     - "8011:8011"
     command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8011"
+
+networks:
+  custom_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.2.0/24
