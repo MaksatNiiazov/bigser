@@ -10,7 +10,7 @@ services:
       - ./db.sqlite3:/app/db.sqlite3
     ports:
     - "8011:8011"
-    command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8011"
+    command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8030"
 
 networks:
   custom_network:
