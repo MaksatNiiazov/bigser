@@ -95,11 +95,11 @@
                     class="d-flex flex-row justify-content-center align-items-center gap-2"
             >
                 <img class="heading-logo" src="{% if bigser.only_logo %}{{ bigser.only_logo.url }}{% endif %}" alt=""/>
-                <h1 class="heading ms-1 text-center">{{ about_title }}</h1>
+                <h1 class="heading ms-1 text-center">{{ bigser.about_title }}</h1>
             </div>
             <div class="expand-text d-flex flex-column gap-2">
                 <p>
-                    {{ about_text }}
+                    {{ bigser.about_text }}
                 </p>
                 <button>Читать больше</button>
             </div>
