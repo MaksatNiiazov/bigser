@@ -229,7 +229,7 @@
         <div class="container">
             <h1 class="heading">{{ bigser.partners_title }}</h1>
             <h3 class="sub-heading text-black">
-                {{ bigser.partners_text }}
+                {{ bigser.partners_text|safe }}
             </h3>
 
             <div class="slider-title">
@@ -316,7 +316,7 @@
 
                 <h1 class="heading text-center">{{ bigser.requests_title }}</h1>
                 <h3 class="sub-heading text-center">
-                    {{ bigser.requests_text }}
+                    {{ bigser.requests_text|safe }}
                 </h3>
                 <form action="" class="d-flex flex-column">
                     <input type="text" placeholder="Ваше имя"/>

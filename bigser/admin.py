@@ -58,7 +58,7 @@ class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
         ('Главный контент', {'fields': ['main_video', 'main_image'], 'classes': ['collapse']}),
         ('О нас',
          {'fields': ['about_title', 'about_text', 'our_mission_title', 'our_mission_text'], 'classes': ['collapse']}),
-        ('Продукты', {'fields': ['products_title', 'products_text'], 'classes': ['collapse']}),
+        ('Продукты', {'fields': ['products_title_top', 'products_text_top', 'products_title_new', 'products_text_new'], 'classes': ['collapse']}),
         ('Партнеры', {'fields': ['partners_title', 'partners_text'], 'classes': ['collapse']}),
         ('Отзывы', {'fields': ['reviews_title'], 'classes': ['collapse']}),
         ('Заявки', {'fields': ['requests_title', 'requests_text'], 'classes': ['collapse']}),
