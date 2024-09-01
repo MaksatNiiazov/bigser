@@ -54,7 +54,7 @@ class SocialLinksInline(TabularInline):
 class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
     fieldsets = [
         ('Меню', {'fields': ['menu_item_main', 'menu_item_about', 'menu_item_products_top', 'menu_item_products_new',
-                             'menu_item_partners', 'menu_item_reviews'], 'classes': ['collapse']}),
+                             'menu_item_partners', 'menu_item_reviews', 'menu_item_contacts'], 'classes': ['collapse']}),
         ('Главный контент', {'fields': ['main_video', 'main_image'], 'classes': ['collapse']}),
         ('О нас',
          {'fields': ['about_title', 'about_text', 'our_mission_title', 'our_mission_text'], 'classes': ['collapse']}),
