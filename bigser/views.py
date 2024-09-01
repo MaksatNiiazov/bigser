@@ -15,7 +15,8 @@ class BigserView(View):
             defaults={
                 'menu_item_main': "Главная",
                 'menu_item_about': "О нас",
-                'menu_item_products': "Продукты",
+                'menu_item_products_top': "ЛУчшие товары",
+                'menu_item_products_new': "Новинки",
                 'menu_item_partners': "Партнеры",
                 'menu_item_reviews': "Отзывы",
                 'main_video': None,
