@@ -99,7 +99,7 @@
             </div>
             <div class="expand-text d-flex flex-column gap-2">
                 <p>
-                    {{ bigser.about_text|safe }}
+                    {{ bigser.about_text }}
                 </p>
                 <button>Читать больше</button>
             </div>
@@ -143,7 +143,7 @@
         <div class="container">
             <h1 class="heading">{{ bigser.products_title_top }}</h1>
             <h3 class="sub-heading">
-                {{ bigser.products_text_top|safe }}
+                {{ bigser.products_text_top }}
             </h3>
 
             <div class="slider mt-5">
@@ -157,7 +157,7 @@
                                          alt=""/>
                                 </div>
                                 <h5>{{ top_product.title }}</h5>
-                                <p>{{ top_product.description|safe }}</p>
+                                <p>{{ top_product.description }}</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -184,7 +184,7 @@
         <div class="container">
             <h1 class="heading">{{ bigser.products_title_new }}</h1>
             <h3 class="sub-heading">
-                {{ bigser.products_text_new|safe }}
+                {{ bigser.products_text_new }}
             </h3>
 
             <div class="slider mt-5">
@@ -198,7 +198,7 @@
                                     <img src="{% if new_product.image %}{{ new_product.image.url }}{% endif %}" alt=""/>
                                 </div>
                                 <h5>{{ new_product.title }}</h5>
-                                <p>{{ new_product.text|safe }}</p>
+                                <p>{{ new_product.text }}</p>
                             </div>
 
                         {% endfor %}
@@ -229,7 +229,7 @@
         <div class="container">
             <h1 class="heading">{{ bigser.partners_title }}</h1>
             <h3 class="sub-heading text-black">
-                {{ bigser.partners_text|safe }}
+                {{ bigser.partners_text }}
             </h3>
 
             <div class="slider-title">
@@ -316,7 +316,7 @@
 
                 <h1 class="heading text-center">{{ bigser.requests_title }}</h1>
                 <h3 class="sub-heading text-center" style="color: #eeeeee;">
-                    {{ bigser.requests_text|safe }}
+                    {{ bigser.requests_text }}
                 </h3>
                 <form action="" class="d-flex flex-column">
                     <input type="text" placeholder="Ваше имя"/>
@@ -352,7 +352,7 @@
 
             <div class="contacts d-flex flex-column flex-lg-row gap-4">
                 <div class="map">
-                    {{ bigser.map|safe }}
+                    {{ bigser.map }}
                 </div>
 
                 <ul class="contacts-list list-unstyled d-flex flex-column gap-4 mt-4 mt-lg-0">
