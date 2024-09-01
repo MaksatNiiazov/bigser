@@ -69,9 +69,7 @@ class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
     inlines = [GalleryInline, ReviewInline, PhonesInline, EmailsInline, AddressInline, SocialLinksInline]
 
     formfield_overrides = {
-        models.TextField: {
-            "widget": WysiwygWidget,
-        },
+
     }
 
 
