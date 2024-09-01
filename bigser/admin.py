@@ -5,7 +5,8 @@ from unfold.admin import ModelAdmin, TabularInline
 from modeltranslation.admin import TabbedTranslationAdmin
 from unfold.contrib.forms.widgets import WysiwygWidget
 
-from .models import Bigser, Gallery, Review, Product, Phones, Emails, Address, SocialLinks, Request, InstagramLinks
+from .models import Bigser, Gallery, Review, Product, Phones, Emails, Address, Request, InstagramLinks, \
+    FacebookLinks, WhatsappLinks
 
 
 class PreviewImageMixin:
@@ -45,11 +46,6 @@ class AddressInline(TabularInline):
     extra = 0
 
 
-class SocialLinksInline(TabularInline):
-    model = SocialLinks
-    extra = 0
-
-
 @admin.register(Bigser)
 class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
     fieldsets = [
@@ -66,7 +62,7 @@ class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
         ('Контакты', {'fields': ['contacts_title', 'contacts_text', 'map'], 'classes': ['collapse']}),
         ('Футер', {'fields': ['footer_text'], 'classes': ['collapse']}),
     ]
-    inlines = [GalleryInline, ReviewInline, PhonesInline, EmailsInline, AddressInline, SocialLinksInline]
+    inlines = [GalleryInline, ReviewInline, PhonesInline, EmailsInline, AddressInline]
 
     formfield_overrides = {
 
@@ -87,3 +83,13 @@ class RequestAdmin(ModelAdmin):
 @admin.register(InstagramLinks)
 class InstagramLinksAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(FacebookLinks)
+class FacebookLinksAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(WhatsappLinks)
+class WhatsappLinksAdmin(admin.ModelAdmin):
+    pass
+

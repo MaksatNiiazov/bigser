@@ -130,6 +130,7 @@ class Phones(models.Model):
     page = models.ForeignKey(Bigser, on_delete=models.CASCADE, related_name='phones',
                              verbose_name=_('телефон Страница'))
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
+    main = models.BooleanField(default=False, verbose_name=_('Главная'))
     phone = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Телефон'))
 
     class Meta:
@@ -140,6 +141,7 @@ class Phones(models.Model):
 class Emails(models.Model):
     page = models.ForeignKey(Bigser, on_delete=models.CASCADE, related_name='emails', verbose_name=_('email Страница'))
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
+    main = models.BooleanField(default=False, verbose_name=_('Главная'))
     email = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Email'))
 
     class Meta:
@@ -150,6 +152,8 @@ class Emails(models.Model):
 class Address(models.Model):
     page = models.ForeignKey(Bigser, on_delete=models.CASCADE, related_name='address_set',
                              verbose_name=_('адрес Страница'))
+    main = models.BooleanField(default=False, verbose_name=_('Главная'))
+    link = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Ссылка'))
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
     address = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Адрес'))
 
@@ -164,15 +168,24 @@ class InstagramLinks(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
 
 
-class SocialLinks(models.Model):
-    page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('социальная Страница'))
+class FacebookLinks(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
-    icon = models.FileField(blank=True, null=True, verbose_name=_('Иконка'))
+    main = models.BooleanField(default=False, verbose_name=_('Главная'))
     link = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Ссылка'))
 
     class Meta:
-        verbose_name = _('социальная сеть')
-        verbose_name_plural = _('социальные сети')
+        verbose_name = _('Facebook')
+        verbose_name_plural = _('Facebook')
+
+
+class WhatsappLinks(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
+    main = models.BooleanField(default=False, verbose_name=_('Главная'))
+    link = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Ссылка'))
+
+    class Meta:
+        verbose_name = _('Whatsapp')
+        verbose_name_plural = _('Whatsapp')
 
 
 class Request(models.Model):

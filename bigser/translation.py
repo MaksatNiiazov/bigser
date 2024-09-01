@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Bigser, Product, Phones, Emails, Address, SocialLinks
+from .models import Bigser, Product, Phones, Emails, Address
 
 
 @register(Bigser)
@@ -32,6 +32,3 @@ class AddressTranslationOptions(TranslationOptions):
     fields = ('name',)
 
 
-@register(SocialLinks)
-class SocialLinksTranslationOptions(TranslationOptions):
-    fields = ('name',)

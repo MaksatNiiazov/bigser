@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 
-from bigser.models import Bigser, Product, Partners, Review
+from bigser.models import Bigser, Product, Partners, Review, InstagramLinks, FacebookLinks, WhatsappLinks, Phones, \
+    Emails, Address
 
 
 # Create your views here.
@@ -47,10 +48,27 @@ class BigserView(View):
         products_title_new = Product.objects.all().order_by('new')
         partners = Partners.objects.all()
         reviews = Review.objects.all()
+        phone_main = Phones.objects.filter(main=True).first()
+        email_main = Emails.objects.filter(main=True).first()
+        address_main = Address.objects.filter(main=True).first()
+        instagram_main = InstagramLinks.objects.filter(main=True).first()
+        instagram_all = InstagramLinks.objects.all().order_by('main')
+        facebook_main = FacebookLinks.objects.filter(main=True).first()
+        whatsapp_main = WhatsappLinks.objects.filter(main=True).first()
+        meta = {}
         return render(request, 'index.html', {
             'bigser': bigser,
             'top_products': products_title_top,
             'new_products': products_title_new,
             'partners': partners,
             'reviews': reviews,
+            'instagram_main': instagram_main,
+            'instagram_all': instagram_all,
+            'facebook_main': facebook_main,
+            'whatsapp_main': whatsapp_main,
+            'phone_main': phone_main,
+            'email_main': email_main,
+            'address_main': address_main,
+            'meta': meta
+
         })
