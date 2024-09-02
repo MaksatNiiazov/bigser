@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views import View
+from django.utils.translation import get_language
 
 from bigser.models import Bigser, Product, Partners, Review, InstagramLinks, FacebookLinks, WhatsappLinks, Phones, \
     Emails, Address, Request
@@ -62,7 +63,9 @@ class BigserView(View):
         whatsapp_main = WhatsappLinks.objects.filter(main=True).first()
         whatsapp_all = WhatsappLinks.objects.all().order_by('main')
         message_exist = request.session.pop('message_exist', False)
+        current_language = get_language()
 
+        print(current_language)
         meta = {}
         return render(request, 'index.html', {
             'bigser': bigser,
@@ -80,7 +83,9 @@ class BigserView(View):
             'email_main': email_main,
             'address_main': address_main,
             'meta': meta,
-            'message_exist': message_exist
+            'message_exist': message_exist,
+            'current_language': current_language
+
 
         })
 
