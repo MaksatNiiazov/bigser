@@ -172,6 +172,10 @@ class InstagramLinks(models.Model):
     link = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Ссылка'))
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
 
+    class Meta:
+        verbose_name = _('Instagram')
+        verbose_name_plural = _('Instagram')
+
 
 class FacebookLinks(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))

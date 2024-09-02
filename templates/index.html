@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg fixed-top bg-white">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <image src="{% if bigser.logo %}{{ bigser.logo.url }}{% endif %}"/>
+                <img src="{% if bigser.logo %}{{ bigser.logo.url }}{% endif %}"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                        <image src="{% if bigser.logo %}{{ bigser.logo.url }}{% endif %}"/>
+                        <img src="{% if bigser.logo %}{{ bigser.logo.url }}{% endif %}"/>
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
@@ -66,9 +66,7 @@
                         </li>
                     </ul>
 
-                    <ul
-                            class="locale-switcher d-flex flex-column flex-lg-row justify-content-center align-items-center"
-                    >
+                    <ul class="locale-switcher d-flex flex-column flex-lg-row justify-content-center align-items-center">
                         <li>
                             <a href="/ky">КРГ</a>
                         </li>
@@ -101,7 +99,7 @@
             </div>
             <div class="expand-text d-flex flex-column gap-2">
                 <p>
-                    {{ bigser.about_text|safe }}
+                    {{ bigser.about_text }}
                 </p>
                 <button>Читать больше</button>
             </div>

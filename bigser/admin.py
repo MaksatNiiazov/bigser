@@ -51,11 +51,13 @@ class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
     fieldsets = [
         ('Logo', {'fields': ['logo', 'only_logo', 'logo_black', 'logo_white'], 'classes': ['collapse']}),
         ('Меню', {'fields': ['menu_item_main', 'menu_item_about', 'menu_item_products_top', 'menu_item_products_new',
-                             'menu_item_partners', 'menu_item_reviews', 'menu_item_contacts'], 'classes': ['collapse']}),
+                             'menu_item_partners', 'menu_item_reviews', 'menu_item_contacts'],
+                  'classes': ['collapse']}),
         ('Главный контент', {'fields': ['main_video', 'main_image'], 'classes': ['collapse']}),
         ('О нас',
          {'fields': ['about_title', 'about_text', 'our_mission_title', 'our_mission_text'], 'classes': ['collapse']}),
-        ('Продукты', {'fields': ['products_title_top', 'products_text_top', 'products_title_new', 'products_text_new'], 'classes': ['collapse']}),
+        ('Продукты', {'fields': ['products_title_top', 'products_text_top', 'products_title_new', 'products_text_new'],
+                      'classes': ['collapse']}),
         ('Партнеры', {'fields': ['partners_title', 'partners_text'], 'classes': ['collapse']}),
         ('Отзывы', {'fields': ['reviews_title'], 'classes': ['collapse']}),
         ('Заявки', {'fields': ['requests_title', 'requests_text'], 'classes': ['collapse']}),
@@ -82,15 +84,15 @@ class RequestAdmin(ModelAdmin):
 
 
 @admin.register(InstagramLinks)
-class InstagramLinksAdmin(admin.ModelAdmin):
+class InstagramLinksAdmin(ModelAdmin):
     pass
 
 
 @admin.register(FacebookLinks)
-class FacebookLinksAdmin(admin.ModelAdmin):
+class FacebookLinksAdmin(ModelAdmin):
     pass
+
 
 @admin.register(WhatsappLinks)
-class WhatsappLinksAdmin(admin.ModelAdmin):
+class WhatsappLinksAdmin(ModelAdmin):
     pass
-
