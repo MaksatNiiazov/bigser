@@ -73,7 +73,7 @@ class Bigser(models.Model):
 
     #
 
-    popup_button = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('попап Заголовок'))
+    popup_button = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('попап Кнопка'))
     popup_text = models.TextField(blank=True, null=True, verbose_name=_('попап Текст'))
 
     def __str__(self):
