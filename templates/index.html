@@ -68,13 +68,13 @@
 
                     <ul class="locale-switcher d-flex flex-column flex-lg-row justify-content-center align-items-center">
                         <li>
-                            <a href="/ky">КРГ</a>
+                            <a href="/ky" {% if LANGUAGE_CODE == 'ky' %}class="active"{% endif %}>КРГ</a>
                         </li>
                         <li>
-                            <a class="active" href="/ru">РУ</a>
+                            <a href="/ru" {% if LANGUAGE_CODE == 'ru' %}class="active"{% endif %}>РУ</a>
                         </li>
                         <li>
-                            <a href="/en">EN</a>
+                            <a href="/en" {% if LANGUAGE_CODE == 'en' %}class="active"{% endif %}>EN</a>
                         </li>
                     </ul>
                 </div>

@@ -77,7 +77,7 @@ class Bigser(models.Model):
     popup_text = models.TextField(blank=True, null=True, verbose_name=_('попап Текст'))
 
     def __str__(self):
-        return 'Контент сайта'
+        return 'Изменить'
 
     def save(self, *args, **kwargs):
         if not self.pk and Bigser.objects.exists():
