@@ -6,7 +6,7 @@ from modeltranslation.admin import TabbedTranslationAdmin
 from unfold.contrib.forms.widgets import WysiwygWidget
 
 from .models import Bigser, Gallery, Review, Product, Phones, Emails, Address, Request, InstagramLinks, \
-    FacebookLinks, WhatsappLinks
+    FacebookLinks, WhatsappLinks, Partners
 
 
 class PreviewImageMixin:
@@ -45,6 +45,10 @@ class AddressInline(TabularInline):
     model = Address
     extra = 0
 
+class PartnersInline(TabularInline):
+    model = Partners
+    extra = 0
+
 
 @admin.register(Bigser)
 class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
@@ -58,14 +62,14 @@ class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
          {'fields': ['about_title', 'about_text', 'our_mission_title', 'our_mission_text'], 'classes': ['collapse']}),
         ('Продукты', {'fields': ['products_title_top', 'products_text_top', 'products_title_new', 'products_text_new'],
                       'classes': ['collapse']}),
-        ('Партнеры', {'fields': ['partners_title', 'partners_text'], 'classes': ['collapse']}),
+        ('Партнеры', {'fields': ['partners_title', ''], 'classes': ['collapse']}),
         ('Отзывы', {'fields': ['reviews_title'], 'classes': ['collapse']}),
         ('Заявки', {'fields': ['requests_title', 'requests_text'], 'classes': ['collapse']}),
         ('Контакты', {'fields': ['contacts_title', 'contacts_text', 'map'], 'classes': ['collapse']}),
         ('Футер', {'fields': ['footer_text'], 'classes': ['collapse']}),
         ('Попап', {'fields': ['popup_text', 'popup_button'], 'classes': ['collapse']})
     ]
-    inlines = [GalleryInline, ReviewInline, PhonesInline, EmailsInline, AddressInline]
+    inlines = [GalleryInline, PartnersInline, ReviewInline, PhonesInline, EmailsInline, AddressInline]
 
     formfield_overrides = {
 
