@@ -101,7 +101,7 @@ class Product(models.Model):
         verbose_name_plural = _('продукты')
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else 'продукт'
 
 
 class Gallery(models.Model):
@@ -141,6 +141,9 @@ class Phones(models.Model):
     main = models.BooleanField(default=False, verbose_name=_('Главная'))
     phone = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Телефон'))
 
+    def __str__(self):
+        return self.phone if self.phone else 'телефон'
+
     class Meta:
         verbose_name = _('телефон')
         verbose_name_plural = _('телефоны')
@@ -151,6 +154,9 @@ class Emails(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
     main = models.BooleanField(default=False, verbose_name=_('Главная'))
     email = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Email'))
+
+    def __str__(self):
+        return self.email if self.email else 'email'
 
     class Meta:
         verbose_name = _('email')
@@ -165,6 +171,8 @@ class Address(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('Название'))
     address = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Адрес'))
 
+    def __str__(self):
+        return self.address if self.address else 'адрес'
     class Meta:
         verbose_name = _('адрес')
         verbose_name_plural = _('адреса')
@@ -207,9 +215,9 @@ class Request(models.Model):
     message = models.TextField(blank=True, null=True, verbose_name=_('Сообщение'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Создано'))
 
-
     def __str__(self):
         return self.name + ' ' + self.email + ' ' + self.phone + ' ' + self.message + ' ' + f'{self.created_at}'
+
     class Meta:
         verbose_name = _('заявка')
         verbose_name_plural = _('заявки')

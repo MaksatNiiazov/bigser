@@ -65,7 +65,6 @@ class BigserView(View):
         message_exist = request.session.pop('message_exist', False)
         current_language = get_language()
 
-        print(current_language)
         meta = {}
         return render(request, 'index.html', {
             'bigser': bigser,

@@ -101,3 +101,18 @@ class FacebookLinksAdmin(ModelAdmin):
 @admin.register(WhatsappLinks)
 class WhatsappLinksAdmin(ModelAdmin):
     pass
+
+
+@admin.register(Phones)
+class PhonesAdmin(ModelAdmin, TabbedTranslationAdmin):
+    pass
+
+
+@admin.register(Emails)
+class EmailsAdmin(ModelAdmin, TabbedTranslationAdmin):
+    pass
+
+
+@admin.register(Address)
+class AddressAdmin(ModelAdmin, TabbedTranslationAdmin):
+    pass
