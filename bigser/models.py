@@ -100,6 +100,9 @@ class Product(models.Model):
         verbose_name = _('продукт')
         verbose_name_plural = _('продукты')
 
+    def __str__(self):
+        return self.title
+
 
 class Gallery(models.Model):
     page = models.ForeignKey(Bigser, on_delete=models.CASCADE, verbose_name=_('галерея Страница'),
