@@ -153,11 +153,11 @@
                         {% for top_product in top_products %}
                             <div class="swiper-slide">
                                 <div class="img-cover overflow-hidden">
-                                    <img src="{% if top_product.images %}{{ top_product.images.url }}{% endif %}"
+                                    <img src="{% if top_product.image %}{{ top_product.image.url }}{% endif %}"
                                          alt=""/>
                                 </div>
                                 <h5>{{ top_product.title }}</h5>
-                                <p>{{ top_product.description }}</p>
+                                <p>{% if top_product.description %}{{ top_product.description }}{% endif %}</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -198,7 +198,7 @@
                                     <img src="{% if new_product.image %}{{ new_product.image.url }}{% endif %}" alt=""/>
                                 </div>
                                 <h5>{{ new_product.title }}</h5>
-                                <p>{{ new_product.text }}</p>
+                                <p>{% if top_product.description %}{{ top_product.description }}{% endif %}</p>
                             </div>
 
                         {% endfor %}
