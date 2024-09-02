@@ -13,7 +13,7 @@ function countLines(element) {
 const numberOfLines = countLines(text);
 
 // Hide the button if there are 10 or fewer lines
-if (numberOfLines <= 10) {
+if (numberOfLines <= 11) {
     button.style.display = 'none';
 }
 
