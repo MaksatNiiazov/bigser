@@ -207,6 +207,9 @@ class Request(models.Model):
     message = models.TextField(blank=True, null=True, verbose_name=_('Сообщение'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Создано'))
 
+
+    def __str__(self):
+        return self.name + ' ' + self.email + ' ' + self.phone + ' ' + self.message + ' ' + f'{self.created_at}'
     class Meta:
         verbose_name = _('заявка')
         verbose_name_plural = _('заявки')
