@@ -9,7 +9,7 @@ class BigserTranslationOptions(TranslationOptions):
               'about_title', 'about_text',
               'our_mission_title', 'our_mission_text', 'products_title_top', 'products_text_top', 'products_title_new', 'products_text_new',
               'partners_title', 'partners_text', 'reviews_title', 'requests_title',
-              'requests_text', 'contacts_title', 'contacts_text', 'footer_text')
+              'requests_text', 'contacts_title', 'contacts_text', 'footer_text', 'popup_text', 'popup_button')
 
 
 @register(Product)

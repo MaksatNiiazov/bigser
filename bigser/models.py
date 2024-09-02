@@ -71,6 +71,11 @@ class Bigser(models.Model):
 
     footer_text = models.TextField(blank=True, null=True, verbose_name=_('контакты Текст'))
 
+    #
+
+    popup_button = models.CharField(max_length=100, blank=True, null=True, verbose_name=_('попап Заголовок'))
+    popup_text = models.TextField(blank=True, null=True, verbose_name=_('попап Текст'))
+
     def __str__(self):
         return 'Контент сайта'
 

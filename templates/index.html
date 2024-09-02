@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="{{ bigser.logo }}" type="image/x-icon">
+
     <title>BIGSER</title>
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -352,7 +354,7 @@
 
             <div class="contacts d-flex flex-column flex-lg-row gap-4">
                 <div class="map">
-                    {{ bigser.map }}
+                    {{ bigser.map|safe }}
                 </div>
 
                 <ul class="contacts-list list-unstyled d-flex flex-column gap-4 mt-4 mt-lg-0">
@@ -423,35 +425,40 @@
                                 </svg>
                             </button>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a target="_blank" href="https://www.instagram.com/bigser_sport" class="d-flex flex-row gap-3">
+                                {% for instagram in instagram_all %}
+                                    <li>
+                                    <a target="_blank" href="{{ insatgram.link }}" class="d-flex flex-row gap-3">
                                         <img src="{% static 'imgs/Instagram.png' %}" alt=""/>
                                         <div class="d-flex flex-column">
-                                            <h5>Главный аккаунт :</h5>
+                                            <h5>{{ instagram.name }}</h5>
 
                                             <p>bigser_sport</p>
                                         </div>
                                     </a>
                                 </li>
+
+                                {% endfor %}
+
+
                             </ul>
                         </div>
                     </li>
 
                     <li class="transform3d social-link">
-                        <a class="d-flex flex-row gap-3 text-decoration-none" href="https://www.facebook.com/bigser.sport" target="_blank">
+                        <a class="d-flex flex-row gap-3 text-decoration-none" href="{{ facebook_main.link }}" target="_blank">
                             <img src="{% static 'imgs/Facebook.png' %}" alt=""/>
                             <div>
                                 <h5>Facebook:</h5>
-                                <p>Bigser Sport</p>
+                                <p>{{ facebook_main.name }}</p>
                             </div>
                         </a>
                     </li>
                     <li class="transform3d social-link">
-                        <a class="d-flex flex-row gap-3 text-decoration-none" href="https://wa.me/+996770546932" target="_blank">
+                        <a class="d-flex flex-row gap-3 text-decoration-none" href="{{ whatsapp_main.link }}" target="_blank">
                             <img src="{% static 'imgs/Whatsapp.png' %}" alt=""/>
                             <div>
                                 <h5>WhatsApp:</h5>
-                                <p>+996770546932</p>
+                                <p>{{ whatsapp_main.name }}</p>
                             </div>
                         </a>
                     </li>
@@ -551,7 +558,12 @@
         crossorigin="anonymous"
 ></script>
 
-<div class="modal fade" data-message-sent="true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade"
+     data-message-sent="{% if message_exist %}true{% else %}false{% endif %}"
+     id="exampleModal"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body py-5">
@@ -562,10 +574,10 @@
                     </svg>
                 </div>
 
-                <h5>Ваша заявка успешно отправлена.</h5>
+                <h5>{{ bigser.popup_text }}</h5>
 
                 <button type="button" class="close-modal-btn submit-btn" data-bs-dismiss="modal">
-                    Закрыть
+                    {{ bigser.popup_button }}
                 </button>
             </div>
         </div>
@@ -573,7 +585,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="./readMore.js"></script>
+<script src="{% static 'js/readMore.js' %}"></script>
 <script>
     const aboutUs = new Swiper(".about-us__slider", {
         slidesPerView: 1.4,

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 
 from bigser.models import Bigser, Product, Partners, Review, InstagramLinks, FacebookLinks, WhatsappLinks, Phones, \
-    Emails, Address
+    Emails, Address, Request
 
 
 # Create your views here.
@@ -41,7 +41,9 @@ class BigserView(View):
                 'email_title': "Электронная почта:",
                 'phone_title': "Номер для связи:",
                 'address_title': "Адрес нашего офиса:",
-                'footer_text': "Bigser Sport — ведущая компания по производству спортивных товаров, базирующаяся в Бишкеке, Кыргызстан."
+                'footer_text': "Bigser Sport — ведущая компания по производству спортивных товаров, базирующаяся в Бишкеке, Кыргызстан.",
+                'popup_text': "Ваша заявка успешно отправлена.",
+                'popup_button': "Закрыть",
             }
         )
         products_title_top = Product.objects.filter(top=True)
@@ -54,7 +56,9 @@ class BigserView(View):
         instagram_main = InstagramLinks.objects.filter(main=True).first()
         instagram_all = InstagramLinks.objects.all().order_by('main')
         facebook_main = FacebookLinks.objects.filter(main=True).first()
+        facebook_all = FacebookLinks.objects.all().order_by('main')
         whatsapp_main = WhatsappLinks.objects.filter(main=True).first()
+        whatsapp_all = WhatsappLinks.objects.all().order_by('main')
         meta = {}
         return render(request, 'index.html', {
             'bigser': bigser,
@@ -65,10 +69,30 @@ class BigserView(View):
             'instagram_main': instagram_main,
             'instagram_all': instagram_all,
             'facebook_main': facebook_main,
+            'facebook_all': facebook_all,
             'whatsapp_main': whatsapp_main,
+            'whatsapp_all': whatsapp_all,
             'phone_main': phone_main,
             'email_main': email_main,
             'address_main': address_main,
             'meta': meta
 
         })
+
+from django.contrib import messages
+from django.shortcuts import redirect
+class CreateRequestView(View):
+    def get(self, request):
+        message_exist = request.session.pop('message_exist', False)
+        return render(request, 'index.html', {'message_exist': message_exist})
+
+    def post(self, request):
+        name = request.POST.get('name', 'Неизвестно')
+        phone = request.POST.get('phone', 'Неизвестно')
+        email = request.POST.get('email', 'Неизвестно')
+        text = request.POST.get('text', 'Неизвестно')
+        Request.objects.create(name=name, phone=phone, email=email, text=text)
+        messages.success(request, 'Ваша заявка принята')
+
+        request.session['message_exist'] = True
+        return redirect('index')

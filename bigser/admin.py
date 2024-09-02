@@ -61,6 +61,7 @@ class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
         ('Заявки', {'fields': ['requests_title', 'requests_text'], 'classes': ['collapse']}),
         ('Контакты', {'fields': ['contacts_title', 'contacts_text', 'map'], 'classes': ['collapse']}),
         ('Футер', {'fields': ['footer_text'], 'classes': ['collapse']}),
+        ('Попап', {'fields': ['popup_text', 'popup_button'], 'classes': ['collapse']})
     ]
     inlines = [GalleryInline, ReviewInline, PhonesInline, EmailsInline, AddressInline]
 
