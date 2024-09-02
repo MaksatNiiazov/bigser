@@ -49,7 +49,7 @@ class BigserView(View):
             }
         )
         products_title_top = Product.objects.filter(top=True)
-        products_title_new = Product.objects.all().order_by('new')
+        products_title_new = Product.objects.all().order_by('-new', "-id")
         partners = Partners.objects.all()
         reviews = Review.objects.all()
         phone_main = Phones.objects.filter(main=True).first()
