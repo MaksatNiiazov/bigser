@@ -1,3 +1,5 @@
+from django.contrib import messages
+from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views import View
 
@@ -59,6 +61,8 @@ class BigserView(View):
         facebook_all = FacebookLinks.objects.all().order_by('main')
         whatsapp_main = WhatsappLinks.objects.filter(main=True).first()
         whatsapp_all = WhatsappLinks.objects.all().order_by('main')
+        message_exist = request.session.pop('message_exist', False)
+
         meta = {}
         return render(request, 'index.html', {
             'bigser': bigser,
@@ -75,12 +79,12 @@ class BigserView(View):
             'phone_main': phone_main,
             'email_main': email_main,
             'address_main': address_main,
-            'meta': meta
+            'meta': meta,
+            'message_exist': message_exist
 
         })
 
-from django.contrib import messages
-from django.shortcuts import redirect
+
 class CreateRequestView(View):
     def get(self, request):
         message_exist = request.session.pop('message_exist', False)
@@ -91,7 +95,7 @@ class CreateRequestView(View):
         phone = request.POST.get('phone', 'Неизвестно')
         email = request.POST.get('email', 'Неизвестно')
         text = request.POST.get('text', 'Неизвестно')
-        Request.objects.create(name=name, phone=phone, email=email, text=text)
+        Request.objects.create(name=name, phone=phone, email=email, message=text)
         messages.success(request, 'Ваша заявка принята')
 
         request.session['message_exist'] = True
