@@ -79,7 +79,7 @@ class BigserAdmin(ModelAdmin, TabbedTranslationAdmin):
 
 @admin.register(Product)
 class ProductAdmin(ModelAdmin, TabbedTranslationAdmin, PreviewImageMixin):
-    fields = ['image_preview', 'image', 'title', 'description']
+    fields = ['image_preview', 'image', 'title', 'description', 'new', 'top']
     readonly_fields = ['image_preview']
 
 
