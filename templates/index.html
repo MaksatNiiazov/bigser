@@ -320,9 +320,9 @@
                 <h3 class="sub-heading text-center" style="color: #eeeeee;">
                     {{ bigser.requests_text }}
                 </h3>
-                <form action="" class="d-flex flex-column">
-                    <input type="text" placeholder="Ваше имя"/>
-                    <input type="email" placeholder="Адрес электронной почты"/>
+                <form action="{% url 'request' %}" method="post" class="d-flex flex-column">
+                    <input type="text" name="name" placeholder="Ваше имя"/>
+                    <input type="email" name="email" placeholder="Адрес электронной почты"/>
                     <div id="country-code" class="d-flex flex-row gap-2">
                         <div class="dropdown">
                             <input type="text" id="country-code-input" name="code" class="country-code"/>
@@ -338,9 +338,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <input type="tel" placeholder="Номер телефона"/>
+                        <input type="tel" name="phone" placeholder="Номер телефона"/>
                     </div>
-                    <textarea type="text" placeholder="Ваше комментарий..." rows="4"></textarea>
+                    <textarea type="text" name="text" placeholder="Ваше комментарий..." rows="4"></textarea>
                     <button class="submit-btn transform3d">Отправить заявку</button>
                 </form>
             </div>
