@@ -87,9 +87,9 @@
 
 <div class="hero">
     <video class="hero-video" src="{% if bigser.main_video %}{{ bigser.main_video.url }}{% endif %}"
-           poster="{% static 'imgs/placeholder.png' %}" muted autoplay loop></video>
+           poster="{% static 'imgs/placeholder.png' %}" muted autoplay loop playsinline controls></video>
     <video class="hero-bg-video" src="{% if bigser.main_video %}{{ bigser.main_video.url }}{% endif %}"
-           poster="{% static 'imgs/placeholder.png' %}" muted autoplay loop></video>
+           poster="{% static 'imgs/placeholder.png' %}" muted autoplay loop playsinline controls></video>
 </div>
 
 <main>
